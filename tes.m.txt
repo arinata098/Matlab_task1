@@ -1,0 +1,37 @@
+gambar = imread("1.jpg");
+gambarabu2 = rgb2gray(gambar);
+figure, imshow(gambarabu2);
+[m,n] = size(gambarabu2);
+gambartresh=zeros(m,n)
+
+for i=1:m
+    for j=1:n
+        if(gambarabu2(i,j) > 150)
+            gambartresh(i,j) = 1;
+        else
+            gambartresh(i,j) = 0;
+        end
+    end
+end
+
+subplot(1,2,1)
+imshow(gambartresh);
+
+//masking
+gambar = imread('2.jpg');
+gambarabu2 = rgb2gray(gambar);
+gambarabu3 = uint8(gambarabu2);
+figure, imshow(gambarabu3);
+[m,n] = size(gambarabu3);
+
+for i=1:m
+   for j=1:n
+       if(gambarabu3(i,j) < 110)
+           gambarsult(i,j) = 0;
+       else
+           gambarsult(i,j) = gambarabu3(i,j);
+       end
+   end
+end
+
+imshow(gambarsult);
